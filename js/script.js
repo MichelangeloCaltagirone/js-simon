@@ -34,7 +34,9 @@ Scaletta
 //Prep
 //Recupero Elmenti dal DOM
 const playBtn = document.getElementById('play');
+const confirmBtn = document.getElementById('confirm');
 const gameField = document.getElementById('gameField');
+const rowInput = document.getElementById('rowInput');
 
 
 
@@ -45,12 +47,31 @@ const second = 1000;
 
 // Eventi Dinammici
 playBtn.addEventListener('click', function() {
+
+    //pulisco il campo di gioco precedente
     gameField.innerHTML = '';
+    rowInput.innerHTML = '';
+    confirmBtn.classList.add('d-none');
+    
+    //creo il mio array da ricordare per questa giocata
     memoNumbs = randomNumbers(66, 5);
     console.log(memoNumbs);
-    for(let i = 0; i < memoNumbs.length; i++) {
-        let numb = memoNumbs[i] + ' ';
-        gameField.innerHTML += numb;
-        setTimeout(emptyGameField, second*11);
-    }
+    
+    //Mostro in pagina i numeri da ricodare
+    showMemoNubs(memoNumbs);
+    
+    //Svuoto il campo di gioco dopo x secondi e creo i campi di input per le risposte
+    setTimeout(() => {
+        emptyGameField();        
+        createNumInput(5, "input", rowInput);
+        //Compare il bottone di submit per le risposte
+        confirmBtn.classList.remove('d-none');
+    }, second*2);
+    
+    
+})
+
+confirmBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+    console.log('ciao');
 })
