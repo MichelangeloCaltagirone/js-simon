@@ -49,7 +49,7 @@ const second = 1000;
 playBtn.addEventListener('click', function() {
 
     //pulisco il campo di gioco precedente
-    gameField.innerHTML = '';
+    emptyGameField();
     rowInput.innerHTML = '';
     confirmBtn.classList.add('d-none');
     
@@ -72,6 +72,18 @@ playBtn.addEventListener('click', function() {
 })
 
 confirmBtn.addEventListener('click', function (event) {
-    event.preventDefault();
-    console.log('ciao');
+    event.preventDefault();  // prevengo il ricaricamento della pagina
+
+    let userArray = [];
+
+    //mi recupero i nodi degli input
+    const inputsField = document.querySelectorAll('input');
+    
+    // estraggo il valore di ogni input e lo metto in un array per il controllo
+    for(let i = 0; i < inputsField.length; i++) {
+        userArray.push(parseInt(inputsField[i].value));
+    }
+    console.log('userArray', userArray);
+    console.log('numeri iniziali', memoNumbs);
+
 })

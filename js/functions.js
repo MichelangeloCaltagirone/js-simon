@@ -24,7 +24,7 @@ function createNumInput(x, what, where) {
         const input = document.createElement(what);
         if(what = 'input') {
             input.type = 'number';
-            input.classList.add('col');
+            input.setAttribute("required", '');
         }
         where.appendChild(input);
     }
