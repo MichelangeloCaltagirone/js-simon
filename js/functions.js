@@ -25,6 +25,8 @@ function createNumInput(x, what, where) {
         if(what = 'input') {
             input.type = 'number';
             input.setAttribute("required", '');
+            input.setAttribute("min", '0');
+            //input.setAttribute("max", '66');
         }
         where.appendChild(input);
     }

@@ -37,6 +37,7 @@ const playBtn = document.getElementById('play');
 const confirmBtn = document.getElementById('confirm');
 const gameField = document.getElementById('gameField');
 const rowInput = document.getElementById('rowInput');
+const form = document.getElementById('formAnsw');
 
 
 
@@ -69,7 +70,54 @@ playBtn.addEventListener('click', function() {
     }, second*2);   
 })
 
+/*
 confirmBtn.addEventListener('click', function (event) {
+    event.preventDefault();  // prevengo il ricaricamento della pagina
+
+    let userArray = [];
+
+    //mi recupero i nodi degli input
+    const inputsField = document.querySelectorAll('input');
+    
+    // estraggo il valore di ogni input e lo metto in un array per il controllo
+    for(let i = 0; i < inputsField.length; i++) {
+        userArray.push(parseInt(inputsField[i].value));
+    }
+    console.log('userArray', userArray);
+    console.log('numeri iniziali', memoNumbs);
+    //const sortedUserArray = userArray.sort();
+    //const sortedMemoNumbs = memoNumbs.sort();
+    //console.log('sorted userArray', userArray);
+    //console.log('sorted beggining numbers', memoNumbs);
+
+    // variabile di controllo per i 2 array
+    let count = 0;
+    // array che conterrà i numeri che ho ricordato giustamente
+    let guessedNum = [];
+    // giro l'array da indovinare e mi chiedo se gli elementi dell'array dell'utente sono contenuti o meno
+    for(let j = 0; j < memoNumbs.length; j++) {
+        let numb = userArray[j];
+        if (memoNumbs.includes(numb)) {
+            guessedNum.push(numb);
+            count++;
+        }
+    }
+    
+    // Produzione Output
+    // Solo se ricordi esattamente 5 numeri hai vinto
+    let winCon = count == memoNumbs.length ? 'Complimenti hai vinto!' : 'Hai perso, sarai più fortunato';
+    // Rimostro gli array, e quelli ricordati giustamente
+    winCon += `<br>${memoNumbs}, sono i numeri mostrati<br>${userArray}, sono i numeri che hai indicato tu<br>${guessedNum}, sono i numeri che hai ricordato`;
+    // Faccio sparire, svuotando, i campi di input
+    rowInput.innerHTML = '';
+    // faccio sparire nuovamente il bottone di conferma
+    confirmBtn.classList.add('d-none');
+    // Aggiorno in pagina il risultato
+    gameField.innerHTML = winCon;    
+})
+    */
+
+form.addEventListener('submit', function(event) {
     event.preventDefault();  // prevengo il ricaricamento della pagina
 
     let userArray = [];
